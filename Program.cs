@@ -4,21 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kelvintofarenhit
+namespace lowtoupper
 {
-    class Program
+    using System;
+    using System.IO;
+    namespace FileLowerCaseToUpperCase
     {
-        
-        
-            static void Main(string[] args)
+        class lowtoupper
+        {
+            static void Main()
             {
-                Console.WriteLine("enter the amount of celsius");
-                int celsius = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("kelvin={0}", celsius + 273);
-                Console.WriteLine("fahrenheit={0}", celsius * 18 / 10 + 32);
+                Console.Write("Enter name file: ");
+                string fileName = Console.ReadLine();
+
+                if (File.Exists(fileName))
+                {
+                    StreamReader fileRw = File.OpenText(fileName);
+                    StreamWriter fileWr = File.CreateText(fileName + ".dat");
+                    string line;
+                    do
+                    {
+                        line = fileRw.ReadLine();
+                        if (line != null)
+                            fileWr.WriteLine(line.ToUpper());
+                    }
+                    while (line != null);
+                    fileRw.Close();
+                    fileWr.Close();
+                }
                 Console.ReadLine();
             }
         }
     }
-
-
+}
