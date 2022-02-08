@@ -4,85 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace calender
+namespace currentdate
 {
-    class Program
-    {
-        
-            static int year = new int();
-            static int month = new int();
-            static int[,] calendar = new int[6, 7];
-            private static DateTime date;
-
-            static void Draw()
+    
+        class CalChecking
+        {
+            static bool isLeap(int year)
             {
-                Console.WriteLine("\n\n");
-                Console.WriteLine("\t", month);
-                Console.WriteLine("MON TU WED THU FRI SAT SUN");
-
+                return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
             }
 
-            static void FillCalendar()
+            static bool isdat()
             {
-                int days = DateTime.DaysInMonth(year, month);
-                int currentDay = 1;
-                var dayOfWeek = (int)date.DayOfWeek;
-                for (int i = 0; i < calendar.GetLength(0); i++)
+                Console.WriteLine(" DAY:");
+                int Day = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("MONTH:");
+                int Month = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("YEAR:");
+                int Year = Convert.ToInt32(Console.ReadLine());
+
+                if (Year > 9999 || Year < 1500)
+                    return false;
+
+                if (Month < 1 || Month > 12)
+                    return false;
+
+
+                if (Day < 1 || Day > 31)
+                    return false;
+
+                if (Month == 2)
                 {
-                    for (int j = 0; j < calendar.GetLength(1) && currentDay - dayOfWeek + 1 <= days; j++)
-                    {
-                        if (i == 0 && month > j)
-                        {
-                            calendar[i, j] = 0;
-                        }
-                        else
-                        {
-                            calendar[i, j] = currentDay - dayOfWeek + 1;
-                            currentDay++;
-                        }
-                    }
+                    if (isLeap(Year))
+                        return (Day <= 29);
+                    else
+                        return (Day <= 28);
                 }
+
+                if (Month == 4 || Month == 6 || Month == 9 || Month == 11)
+                    return (Day <= 30);
+
+                return true;
             }
 
-            static void DrawCalendar()
+            public static void Main(string[] args)
             {
-                for (int i = 0; i < calendar.GetLength(0); i++)
+                if (isdat())
                 {
-                    for (int j = 0; j < calendar.GetLength(1); j++)
-                    {
-                        if (calendar[i, j] > 0)
-                        {
-                            if (calendar[i, j] < 10)
-                            {
-                                Console.Write(" " + calendar[i, j] + " ");
-                            }
-                            else
-                            {
-                                Console.Write(calendar[i, j] + " ");
-                            }
-                        }
-                        else
-                        {
-                            Console.Write("  ");
-                        }
-                    }
-                    Console.WriteLine(" ");
+                    Console.WriteLine("The date is ValidDate");
                 }
-            }
+                else
 
-            static void Main(string[] args)
-            {
-                Console.Write("Enter the year:");
-                year = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter the month : ");
-                month = Convert.ToInt32(Console.ReadLine());
-
-                Draw();
-                FillCalendar();
-                DrawCalendar();
+                    Console.WriteLine("The date is invalid date");
             Console.ReadLine();
-
             }
         }
+
     }
+
 
