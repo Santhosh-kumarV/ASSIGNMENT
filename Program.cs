@@ -4,76 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Factorial
+namespace House
 {
-   
-        class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
-                Console.WriteLine("Enter number to find sin value:");
-                float num = Convert.ToSingle(Console.ReadLine());
-                SinOfNumber son = new SinOfNumber();
-                float sin = son.sin(num);
-                Console.WriteLine("Sin value of " + num + "is:" + sin);
+            
+                SmallApartment apartment = new SmallApartment();
+                Person person = new Person("vijay");
+                apartment.door = new House.Door("black");
+                person.house = apartment;
+                person.ShowData();
                 Console.ReadLine();
-            }
-        }
-        class SinOfNumber
-        {
-            int factorial(int fact)
-            {
-                int i;
-                int k = 1;
-                for (i = 1; i <= fact; i++)
-                {
-                    k = k * i;
-                }
-                return k;
-            }
-            float Pow(float num, int pow)
-            {
-                float result = 1;
-
-                if (pow > 0)
-                {
-                    for (int i = 1; i <= pow; ++i)
-                    {
-                        result *= num;
-                    }
-                }
-                else if (pow < 0)
-                {
-                    for (int i = -1; i >= pow; --i)
-                    {
-                        result /= num;
-                    }
-                }
-
-                return result;
-            }
-            public float sin(float num)
-            {
-                float sum = 0;
-                int i, j = 0;
-                for (i = 0; i <= num + 10; i++)
-                {
-                    if (i % 2 != 0)
-                    {
-                        j++;
-                        float numaretor = Pow(num, i);
-                        float denominator = factorial(i);
-                        float term = numaretor / denominator;
-                        if (j % 2 != 0)
-                        {
-                            sum = sum + term;
-                        }
-                        else
-                            sum = sum - term;
-                    }
-                }
-                return sum;
-            }
-        }
-    }
-
+            }        public class House        {            public int Area { get; set; }            public Door door;            public House(int area = 200)            {                Area = area;            }            public void ShowData()            {                Console.WriteLine($"I am a house, my area is {Area} m2");            }            public Door GetDoor()            {                return door;            }            public class Door            {                public string Color { get; set; }                public Door(string color = "white")                {                    Color = color;                }                public void ShowData()                {                    Console.WriteLine($"I am a door, my color is {Color}");                }            }        }        public class SmallApartment : House        {            public SmallApartment(int area = 50) : base(area)            {            }        }        public class Person        {            private string name;            public House house { get; set; }            public Person(string name)            {                this.name = name;            }            public void ShowData()            {                Console.WriteLine($"A person whose name is {name}");                Console.WriteLine("Data of house:");                house.ShowData();                Console.WriteLine("Data of door:");                house.GetDoor().ShowData();            }        }    }}
+        
