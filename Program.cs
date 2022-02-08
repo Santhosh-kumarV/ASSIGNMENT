@@ -4,81 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace radius
+namespace Realnumber
 {
-
-    public class Circle
-    {
-        public double radius;
-
-
-        public Circle(double r)
-        {
-            radius = r;
-
-
-        }
-
-
-        public double getArea()
-        {
-            return Math.PI  radius radius;
-        }
-    }
-
-    public class Cylinder
-    {
-        public Circle dt;
-        public double height;
-        public string color;
-
-        public Cylinder(double r, double h, string c)
-        {
-            dt = new Circle(r);
-            height = h;
-        }
-        public Cylinder(double r, double h)
-        {
-            dt = new Circle(r);
-            height = h;
-        }
-        public Cylinder(double r)
-        {
-            dt = new Circle(r);
-
-        }
-
-
-
-        public double getVolume()
-        {
-            return dt.getArea() * height;
-        }
-
-
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            //  Circle circle = new Circle(12.34);
+            double avg = 0, avg1 = 0;
+            double sum = 0, sum1 = 0;
+            int a;
+            Console.WriteLine("enter a number");
+            for (int i=1;i<=5;i++)
+            {
 
-            Cylinder cylinders = new Cylinder(12.34, 10.0, "blue");
-            //double area=circle.getArea();
-            // Console.WriteLine(area);
-            //Console.WriteLine(circle1.color);
+              a = Convert.ToInt32(Console.ReadLine());
+                if(a>0)
+                {
+                    sum = sum + a;
 
+                }
+                else
+                {
+                    sum1 = sum1 - a;
 
-            Cylinder[] circles = {                                new Cylinder(80),                            new Cylinder(12.3,30.7),                                    new Cylinder(12.34, 10.0, "blue")                                };
-
-            Console.WriteLine(circles[1].getVolume());
+                }
+            }
+            avg = sum / 10;
+            avg1 = sum1 / 10;
+            Console.WriteLine("sum of all numbers +ve numbers:" + sum);
+            Console.WriteLine("sum of all numbers -ve numbers:" + sum1);
+            Console.WriteLine("avg of all numbers +ve numbers:" + avg);
+            Console.WriteLine("avg all numbers -ve numbers:" + avg1);
+            Console.ReadLine();
+            
+            }
         }
     }
-}
-
-           // Console.WriteLine(circles[0].getVolume());
-           //Console.WriteLine(circle[0].getArea());
-
-//Console.WriteLine(cylinder.getVolume());
-
 
