@@ -4,34 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lowtoupper
+namespace multiplication
 {
-    using System;
-    using System.IO;
-    namespace FileLowerCaseToUpperCase
+    class Program
     {
-        class lowtoupper
+        static void Main(string[] args)
         {
-            static void Main()
+          
+            Console.WriteLine("enter the number:");
+          
+           int n = Convert.ToInt32(Console.ReadLine());
+            int i = 1;
+            while (i <= 10)
             {
-                Console.Write("Enter name file: ");
-                string fileName = Console.ReadLine();
+                int x = n * i;
 
-                if (File.Exists(fileName))
-                {
-                    StreamReader fileRw = File.OpenText(fileName);
-                    StreamWriter fileWr = File.CreateText(fileName + ".dat");
-                    string line;
-                    do
-                    {
-                        line = fileRw.ReadLine();
-                        if (line != null)
-                            fileWr.WriteLine(line.ToUpper());
-                    }
-                    while (line != null);
-                    fileRw.Close();
-                    fileWr.Close();
-                }
+
+                Console.WriteLine(n + "*" + i + "=" + x);
+                i++;
+
+
                 Console.ReadLine();
             }
         }
