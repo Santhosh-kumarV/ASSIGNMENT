@@ -4,40 +4,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace table1
+namespace currentdate
 {
-    class Program
-    {
-        static void Main(string[] args)
+    
+        class CalChecking
         {
-            
-                int temp;
-                int[] arr = new int[5];
+            static bool isLeap(int year)
+            {
+                return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
+            }
 
-                Console.Write("Enter five numbers:");
-                for (int i = 0; i < arr.Length; i++)
+            static bool isdat()
+            {
+                Console.WriteLine(" DAY:");
+                int Day = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("MONTH:");
+                int Month = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("YEAR:");
+                int Year = Convert.ToInt32(Console.ReadLine());
+
+                if (Year > 9999 || Year < 1500)
+                    return false;
+
+                if (Month < 1 || Month > 12)
+                    return false;
+
+
+                if (Day < 1 || Day > 31)
+                    return false;
+
+                if (Month == 2)
                 {
-                    arr[i] = Convert.ToInt32(Console.ReadLine());
+                    if (isLeap(Year))
+                        return (Day <= 29);
+                    else
+                        return (Day <= 28);
                 }
 
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    for (int j = 1 + i; j < arr.Length; j++)
-                    {
-                        if (arr[i] > arr[j])
-                        {
-                            temp = arr[i];
-                            arr[i] = arr[j];
-                            arr[j] = temp;
-                        }
-                    }
-                }
+                if (Month == 4 || Month == 6 || Month == 9 || Month == 11)
+                    return (Day <= 30);
 
-                Console.Write("Array list after sorting:");
-                for (int i = 0; i < arr.Length; i++)
+                return true;
+            }
+
+            public static void Main(string[] args)
+            {
+                if (isdat())
                 {
-                    Console.Write(arr[i] + " ");
+                    Console.WriteLine("The date is ValidDate");
                 }
+                else
+
+                    Console.WriteLine("The date is invalid date");
             Console.ReadLine();
             }
         }
