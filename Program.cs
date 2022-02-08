@@ -4,28 +4,81 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace multiplication
+namespace radius
 {
+
+    public class Circle
+    {
+        public double radius;
+
+
+        public Circle(double r)
+        {
+            radius = r;
+
+
+        }
+
+
+        public double getArea()
+        {
+            return Math.PI  radius radius;
+        }
+    }
+
+    public class Cylinder
+    {
+        public Circle dt;
+        public double height;
+        public string color;
+
+        public Cylinder(double r, double h, string c)
+        {
+            dt = new Circle(r);
+            height = h;
+        }
+        public Cylinder(double r, double h)
+        {
+            dt = new Circle(r);
+            height = h;
+        }
+        public Cylinder(double r)
+        {
+            dt = new Circle(r);
+
+        }
+
+
+
+        public double getVolume()
+        {
+            return dt.getArea() * height;
+        }
+
+
+    }
     class Program
     {
         static void Main(string[] args)
         {
-          
-            Console.WriteLine("enter the number:");
-          
-           int n = Convert.ToInt32(Console.ReadLine());
-            int i = 1;
-            while (i <= 10)
-            {
-                int x = n * i;
+            //  Circle circle = new Circle(12.34);
+
+            Cylinder cylinders = new Cylinder(12.34, 10.0, "blue");
+            //double area=circle.getArea();
+            // Console.WriteLine(area);
+            //Console.WriteLine(circle1.color);
 
 
-                Console.WriteLine(n + "*" + i + "=" + x);
-                i++;
+            Cylinder[] circles = {                                new Cylinder(80),                            new Cylinder(12.3,30.7),                                    new Cylinder(12.34, 10.0, "blue")                                };
 
-
-                Console.ReadLine();
-            }
+            Console.WriteLine(circles[1].getVolume());
         }
     }
-}
+}
+
+           // Console.WriteLine(circles[0].getVolume());
+           //Console.WriteLine(circle[0].getArea());
+
+//Console.WriteLine(cylinder.getVolume());
+
+
