@@ -4,41 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sumofprime
+namespace table1
 {
     class Program
-    {        static bool checkPrime(int numberToCheck)
+    {
+        static void Main(string[] args)
         {
-            if (numberToCheck == 1)
-            {
-                return false;
-            }
-            for (int i = 2;
-                     i * i <= numberToCheck; i++)
-            {
-                if (numberToCheck % i == 0)
+            
+                int temp;
+                int[] arr = new int[5];
+
+                Console.Write("Enter five numbers:");
+                for (int i = 0; i < arr.Length; i++)
                 {
-                    return false;
+                    arr[i] = Convert.ToInt32(Console.ReadLine());
                 }
-            }
-            return true;
-        }
-        static int PrimeSum(int s, int r)
-        { 
-            int sum = 0;
-            for (int i = r; i >= s; i--)
 
-            {
-
-                // Check for prime
-                bool isPrime = checkPrime(i);
-                if (isPrime)
+                for (int i = 0; i < arr.Length; i++)
                 {
-
-                    // Sum the prime number
-                    sum = sum + i;
+                    for (int j = 1 + i; j < arr.Length; j++)
+                    {
+                        if (arr[i] > arr[j])
+                        {
+                            temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
                 }
+
+                Console.Write("Array list after sorting:");
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    Console.Write(arr[i] + " ");
+                }
+            Console.ReadLine();
             }
         }
-    
+
+    }
+
 
