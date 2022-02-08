@@ -4,60 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sorting
+namespace sumofprime
 {
     class Program
-    {
-        
-
-            static void Main()
+    {        static bool checkPrime(int numberToCheck)
+        {
+            if (numberToCheck == 1)
             {
-                Sortingthreenumbers(33, 1, 2);
-                Sortingthreenumbers(3, 2, 1);
-                Sortingthreenumbers(1, 11, 2);
-                Sortingthreenumbers(0, 12, 2);
-                Sortingthreenumbers(0, 1, 22);
-            Console.ReadLine();
+                return false;
             }
-            static void Sortingthreenumbers(int a, int b, int c)
+            for (int i = 2;
+                     i * i <= numberToCheck; i++)
             {
-                if (a > b && a > c)
+                if (numberToCheck % i == 0)
                 {
-                    if (b > c)
-                    {
-                        Console.WriteLine("{0},{1},{2}", a, b, c);
-                    }
-                    else
-                    {
-                        Console.WriteLine("{0},{1},{2}", a, c, b);
-                    }
+                    return false;
                 }
-                else if (b > a && b > c)
+            }
+            return true;
+        }
+        static int PrimeSum(int s, int r)
+        { 
+            int sum = 0;
+            for (int i = r; i >= s; i--)
+
+            {
+
+                // Check for prime
+                bool isPrime = checkPrime(i);
+                if (isPrime)
                 {
-                    if (a > c)
-                    {
-                        Console.WriteLine("{0},{1},{2}", b, a, c);
-                    }
-                    else
-                    {
-                        Console.WriteLine("{0},{1},{2}", b, c, a);
-                    }
-                }
-                else
-                {
-                    if (c > a && c > b)
-                    {
-                        if (a > b)
-                        {
-                            Console.WriteLine("{0},{1},{2}", c, a, b);
-                        }
-                        else
-                        {
-                            Console.WriteLine("{0},{1},{2}", c, b, a);
-                        }
-                    }
+
+                    // Sum the prime number
+                    sum = sum + i;
                 }
             }
         }
-    }
+    
 
