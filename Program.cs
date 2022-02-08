@@ -4,39 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Realnumber
+namespace ReversebyWords
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double avg = 0, avg1 = 0;
-            double sum = 0, sum1 = 0;
-            int a;
-            Console.WriteLine("enter a number");
-            for (int i=1;i<=5;i++)
-            {
-
-              a = Convert.ToInt32(Console.ReadLine());
-                if(a>0)
-                {
-                    sum = sum + a;
-
-                }
-                else
-                {
-                    sum1 = sum1 - a;
-
-                }
-            }
-            avg = sum / 10;
-            avg1 = sum1 / 10;
-            Console.WriteLine("sum of all numbers +ve numbers:" + sum);
-            Console.WriteLine("sum of all numbers -ve numbers:" + sum1);
-            Console.WriteLine("avg of all numbers +ve numbers:" + avg);
-            Console.WriteLine("avg all numbers -ve numbers:" + avg1);
-            Console.ReadLine();
             
+
+                int a = 0, b = 1, c, i, num;
+                Console.WriteLine("Enter the Number of Digits:");
+                num = int.Parse(Console.ReadLine());
+                Console.Write(a + " " + b + " ");
+                for (i = 1; i <= num; ++i)
+                {
+                    c = a + b;
+                    Console.Write(c + " ");
+                    a = b;
+                    b = c;
+                }
+            Console.ReadLine();
             }
         }
     }
