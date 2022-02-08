@@ -4,26 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReversebyWords
+namespace Sorting
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            
+        
 
-                int a = 0, b = 1, c, i, num;
-                Console.WriteLine("Enter the Number of Digits:");
-                num = int.Parse(Console.ReadLine());
-                Console.Write(a + " " + b + " ");
-                for (i = 1; i <= num; ++i)
-                {
-                    c = a + b;
-                    Console.Write(c + " ");
-                    a = b;
-                    b = c;
-                }
+            static void Main()
+            {
+                Sortingthreenumbers(33, 1, 2);
+                Sortingthreenumbers(3, 2, 1);
+                Sortingthreenumbers(1, 11, 2);
+                Sortingthreenumbers(0, 12, 2);
+                Sortingthreenumbers(0, 1, 22);
             Console.ReadLine();
+            }
+            static void Sortingthreenumbers(int a, int b, int c)
+            {
+                if (a > b && a > c)
+                {
+                    if (b > c)
+                    {
+                        Console.WriteLine("{0},{1},{2}", a, b, c);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0},{1},{2}", a, c, b);
+                    }
+                }
+                else if (b > a && b > c)
+                {
+                    if (a > c)
+                    {
+                        Console.WriteLine("{0},{1},{2}", b, a, c);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0},{1},{2}", b, c, a);
+                    }
+                }
+                else
+                {
+                    if (c > a && c > b)
+                    {
+                        if (a > b)
+                        {
+                            Console.WriteLine("{0},{1},{2}", c, a, b);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0},{1},{2}", c, b, a);
+                        }
+                    }
+                }
             }
         }
     }
